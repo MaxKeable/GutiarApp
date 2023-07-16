@@ -1,0 +1,25 @@
+{
+  "name": "mern-web-app",
+  "version": "1.0.0",
+  "description": "A MERN app that uses TypeScript, React and MUI, and gets deployed to an Azure Web App on push to the \"deploy\" branch.",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd client && npm install && cd ../api && npm install",
+    "build": "cd client && npm run build && cd ../api && npm run build",
+    "start": "cd api && npm run start",
+    "develop": "concurrently \"cd client && npm start\" \"cd api && npm run develop\""
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "semi": true,
+    "doubleQuote": true,
+    "trailingComma": "none",
+    "jsxBracketSameLine": true
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
