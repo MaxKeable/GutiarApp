@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - <YOUR_AZURE_WEB_APP_NAME> # Replace with your app name
+name: Build and deploy Node.js app to Azure Web App - Block-Guitar-App
 
 on:
   push:
@@ -53,7 +53,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: "<YOUR_AZURE_WEB_APP_NAME>" # Replace with your app name
+          app-name: "Block-Guitar-App"
           slot-name: "Production"
-          publish-profile: ${{ secrets.<GITHUB_PUBLISH_PROFILE_HERE> }} # Replace with the secret name of the Azure Web App publish profile
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_49938C2393544C30845EC7B96494B75D }}
           package: release.zip
