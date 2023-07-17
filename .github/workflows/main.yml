@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - Block-Guitar-App
 on:
   push:
     branches:
-      - deploy # Deployment runs on push to the deploy branch
+      - main # Deployment runs on push to the deploy branch
   workflow_dispatch:
 
 jobs:
