@@ -1,12 +1,16 @@
 import "./App.css";
-import { Box } from "@mui/material";
-import TestAudio from "./components/testAudo";
+import Home from "./components/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import GuitarTuner from "./components/GuitarTuner";
 
 function App() {
   return (
-    <Box>
-      <TestAudio />
-    </Box>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/guitartuner" element={<GuitarTuner />} />
+      </Routes>
+    </Router>
   );
 }
 
