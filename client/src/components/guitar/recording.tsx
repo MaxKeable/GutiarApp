@@ -60,23 +60,21 @@ const AudioNote: React.FC = () => {
 
     analyser.current.getByteFrequencyData(dataArray.current);
 
-    let total = 0;
-    let sumCounts = 0;
+    let peakIndex = 0;
+    let peakValue = dataArray.current[0];
 
-    for (let i = 0; i < dataArray.current.length; i++) {
-      total += dataArray.current[i] * i;
-      sumCounts += dataArray.current[i];
+    for (let i = 1; i < dataArray.current.length; i++) {
+      if (dataArray.current[i] > peakValue) {
+        peakValue = dataArray.current[i];
+        peakIndex = i;
+      }
     }
 
-    let averageFreq = 0;
-    if (sumCounts > 0) {
-      averageFreq =
-        (total / sumCounts) *
-        (audioContext.sampleRate / (analyser.current.fftSize * 2));
-    }
+    let peakFrequency =
+      (peakIndex * audioContext.sampleRate) / (2 * analyser.current.fftSize);
 
-    setFrequency(averageFreq);
-    setNote(frequencyToNote(averageFreq));
+    setFrequency(peakFrequency);
+    setNote(frequencyToNote(peakFrequency));
 
     window.requestAnimationFrame(() => updateFrequency(audioContext));
   };
