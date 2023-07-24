@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import routes from "./routes";
 import path from "path";
 
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3001;
