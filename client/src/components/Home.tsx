@@ -4,6 +4,8 @@ import React from "react";
 import homeBG from "../assets/homeBG.svg";
 import G from "../assets/G.svg";
 import B from "../assets/b.svg";
+import BlockHeader from "./headers/BlockHeader";
+import logo from "../assets/logo1.svg";
 
 const Home = () => {
   // media query
@@ -27,8 +29,8 @@ const Home = () => {
     imgHeightA = "350px";
     imgWidthB = "400px";
     imgHeightB = "400px";
-    boxHeightA = "100vh";
-    boxHeightB = "90vh";
+    boxHeightA = "90vh";
+    boxHeightB = "80vh";
   }
 
   const imageStyle = {
@@ -41,63 +43,76 @@ const Home = () => {
   };
 
   return (
-    <Grid
-      container
+    <Box
       sx={{
         backgroundImage: `url(${homeBG})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        maxHeight: "100vh"
+        maxHeight: "100vh",
+        displayflex: "flex",
+        flexDirection: "column"
       }}>
       {/* Guitar */}
-      <Grid item xs={12} sm={6}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            height: boxHeightA
-          }}>
-          <img src={G} alt="G" style={imageStyle} />
-          <Link to="/guitartuner" style={{ textDecoration: "none" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{
-                top: -50
-              }}>
-              GUITAR
-            </Button>
-          </Link>
-        </Box>
-      </Grid>
+      <BlockHeader
+        logo={logo}
+        navLinks={[
+          { name: "HOME", path: "/" },
+          { name: "GUITAR", path: "/guitartuner" },
+          { name: "BASS", path: "/basstuner" },
+          { name: "LOGIN", path: "/login" },
+        ]}
+        alignment="left"
+      />
+      <Grid container>
+        <Grid item xs={12} sm={6}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: boxHeightA
+            }}>
+            <img src={G} alt="G" style={imageStyle} />
+            <Link to="/guitartuner" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{
+                  top: -50
+                }}>
+                GUITAR
+              </Button>
+            </Link>
+          </Box>
+        </Grid>
 
-      {/* Bass */}
-      <Grid item xs={12} sm={6}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            height: boxHeightB
-          }}>
-          <img src={B} alt="B" style={imageStyleB} />
-          <Link to="/basstuner" style={{ textDecoration: "none" }}>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{
-                top: -40
-              }}>
-              BASS
-            </Button>
-          </Link>
-        </Box>
+        {/* Bass */}
+        <Grid item xs={12} sm={6}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              height: boxHeightB
+            }}>
+            <img src={B} alt="B" style={imageStyleB} />
+            <Link to="/basstuner" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{
+                  top: -40
+                }}>
+                BASS
+              </Button>
+            </Link>
+          </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 };
 
