@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.post("/", async (req: Request, res: Response) => {
     try {
-      // const { name, email, password } = req.body;
+  
+         // const { name, email, password } = req.body;
   
       // // Check if the email field is present in the request
       // if (!email) {
@@ -30,6 +31,7 @@ router.post("/", async (req: Request, res: Response) => {
   
       // // If the user is found, you can send back the user data in the response
       // return res.status(200).json(user);
+
       res.status(200).json({message: "Login successful"});
     } catch (err) {
       console.error("Error during login:", err);
