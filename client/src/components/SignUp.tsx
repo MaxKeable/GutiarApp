@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Grid,
-  TextField,
-  FormHelperText,
-} from "@mui/material";
+import { Box, Button, Grid, TextField, FormHelperText } from "@mui/material";
 import homeBG from "../assets/homeBG.svg";
 import BlockHeader from "./headers/BlockHeader";
 import logo from "../assets/logo1.svg";
@@ -30,14 +24,14 @@ const SignUp = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "center"
   };
 
   const initialValues = {
     username: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmPassword: ""
   };
 
   const validationSchema = Yup.object({
@@ -46,19 +40,32 @@ const SignUp = () => {
     password: Yup.string().required("Required"),
     confirmPassword: Yup.string()
       .required("Required")
-      .oneOf([Yup.ref("password"), ""], "Passwords must match"),
+      .oneOf([Yup.ref("password"), ""], "Passwords must match")
   });
 
-  const handleSubmit = async (values: any, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => {    try {
+  const handleSubmit = async (
+    values: any,
+    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
+  ) => {
+    try {
+      values.name = values.username;
+      console.log("Form values:", values);
+
+      const requestObject = {
+        name: values.username,
+        email: values.email,
+        password: values.password
+      };
+
       // Send a POST request to the backend to register the user
       const response = await fetch("/api/signup", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(requestObject)
       });
-  
+
       if (response.ok) {
         // Registration successful, show success message or redirect
         console.log("User registered successfully!");
@@ -68,6 +75,7 @@ const SignUp = () => {
         console.error("Registration failed!");
         // You can show an error message to the user or handle the error accordingly
       }
+      console.log(values.username, values.email, values.password);
     } catch (error) {
       console.error("Error during registration:", error);
       // Handle any errors that occurred during the registration process
@@ -76,7 +84,6 @@ const SignUp = () => {
       setSubmitting(false);
     }
   };
-  
 
   return (
     <Box
@@ -87,16 +94,15 @@ const SignUp = () => {
         backgroundPosition: "center",
         height: "100vh",
         display: "flex",
-        flexDirection: "column",
-      }}
-    >
+        flexDirection: "column"
+      }}>
       <BlockHeader
         logo={logo}
         navLinks={[
           { name: "HOME", path: "/" },
           { name: "GUITAR", path: "/guitartuner" },
           { name: "BASS", path: "/basstuner" },
-          { name: "LOGIN", path: "/login" },
+          { name: "LOGIN", path: "/login" }
         ]}
         alignment="left"
       />
@@ -105,8 +111,7 @@ const SignUp = () => {
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
+            onSubmit={handleSubmit}>
             {({ isSubmitting }) => (
               <Form>
                 <Field
@@ -131,11 +136,7 @@ const SignUp = () => {
                   label="Email"
                   name="email"
                 />
-                <ErrorMessage
-                  name="email"
-                  component={FormHelperText}
-                  error
-                />
+                <ErrorMessage name="email" component={FormHelperText} error />
 
                 <Field
                   as={TextField}
@@ -171,8 +172,7 @@ const SignUp = () => {
                   type="submit"
                   variant="contained"
                   color="primary"
-                  disabled={isSubmitting}
-                >
+                  disabled={isSubmitting}>
                   Sign Up
                 </Button>
               </Form>
