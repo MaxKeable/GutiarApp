@@ -16,17 +16,11 @@ import logo from "../assets/logo1.svg";
 import { Form, Formik } from "formik";
 
 const Login = () => {
-  const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [isDialogOpen, setDialogOpen] = useState(false);
 
   const handleSubmitForm = async (values: any) => {
-    // Validate name field
-    if (!values.name) {
-      setNameError("Name is required");
-    } else {
-      setNameError("");
-    }
+    
 
     // Validate email field
     if (!values.email) {
@@ -108,26 +102,6 @@ const Login = () => {
             initialValues={{ name: "", email: "", password: "" }}
             onSubmit={handleSubmitForm}>
             <Form>
-              <TextField
-                id="standard-basic"
-                label="Name"
-                variant="standard"
-                name="name"
-                fullWidth
-                sx={{ my: 1 }}
-                inputProps={{
-                  style: textFieldStyle
-                }}
-                error={Boolean(nameError)}
-                helperText={nameError}
-                onBlur={(e) => {
-                  if (!e.target.value) {
-                    setNameError("Name is required");
-                  } else {
-                    setNameError("");
-                  }
-                }}
-              />
               <TextField
                 id="standard-basic"
                 label="Email"
