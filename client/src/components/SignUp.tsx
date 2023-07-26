@@ -1,7 +1,5 @@
-import React from "react";
 import { Box, Button, Grid, TextField, FormHelperText } from "@mui/material";
 import homeBG from "../assets/homeBG.svg";
-import logo from "../assets/logo1.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 

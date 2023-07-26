@@ -11,14 +11,14 @@ import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 
-const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required("Required"),
-  lastName: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string()
-    .min(6, "Password must contain at least 6 characters")
-    .required("Required")
-});
+// const validationSchema = Yup.object().shape({
+//   firstName: Yup.string().required("Required"),
+//   lastName: Yup.string().required("Required"),
+//   email: Yup.string().email("Invalid email").required("Required"),
+//   password: Yup.string()
+//     .min(6, "Password must contain at least 6 characters")
+//     .required("Required")
+// });
 
 const SidePod = (props: { setIsSidePodOpen: Function }) => {
   return (
