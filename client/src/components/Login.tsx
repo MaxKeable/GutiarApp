@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -11,7 +11,6 @@ import {
   TextField
 } from "@mui/material";
 import homeBG from "../assets/homeBG.svg";
-import logo from "../assets/logo1.svg";
 import { Form, Formik } from "formik";
 
 const Login = () => {

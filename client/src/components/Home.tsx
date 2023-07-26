@@ -1,11 +1,10 @@
 import { Box, Button, Grid, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import homeBG from "../assets/homeBG.svg";
 import G from "../assets/G.svg";
 import B from "../assets/b.svg";
 import Nav from "./nav";
-import { is } from "date-fns/locale";
 import SidePod from "./SidePod";
 
 const Home = () => {

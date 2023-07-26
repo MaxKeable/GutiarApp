@@ -6,7 +6,7 @@ const Nav = (props: { setIsSidePodOpen: Function }) => {
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
       <Box ml={5} mt={4}>
-        <img src={Logo} style={{ height: "80px", width: "auto" }} />
+        <img src={Logo} alt="logo" style={{ height: "80px", width: "auto" }} />
       </Box>
       <Box display="flex" alignItems="center" mr={5}>
         <Button variant="text" href="/">
