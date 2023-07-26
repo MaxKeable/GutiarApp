@@ -56,4 +56,4 @@ jobs:
           app-name: "Guitar-App"
           slot-name: "Production"
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4BD4039B78084611ABAC6CDC5B570C9D }}
-          package: package.zip
+          package: release.zip
