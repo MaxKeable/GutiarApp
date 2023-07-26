@@ -11,7 +11,6 @@ import {
   TextField
 } from "@mui/material";
 import homeBG from "../assets/homeBG.svg";
-import BlockHeader from "./headers/BlockHeader";
 import logo from "../assets/logo1.svg";
 import { Form, Formik } from "formik";
 
@@ -20,8 +19,6 @@ const Login = () => {
   const [isDialogOpen, setDialogOpen] = useState(false);
 
   const handleSubmitForm = async (values: any) => {
-    
-
     // Validate email field
     if (!values.email) {
       setEmailError("Email is required");
@@ -86,16 +83,6 @@ const Login = () => {
         display: "flex",
         flexDirection: "column"
       }}>
-      <BlockHeader
-        logo={logo}
-        navLinks={[
-          { name: "HOME", path: "/" },
-          { name: "GUITAR", path: "/guitartuner" },
-          { name: "BASS", path: "/basstuner" },
-          { name: "LOGIN", path: "/login" }
-        ]}
-        alignment="left"
-      />
       <Grid item xs={12}>
         <Box sx={glassMorphismStyles}>
           <Formik

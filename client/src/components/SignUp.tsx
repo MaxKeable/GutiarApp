@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Button, Grid, TextField, FormHelperText } from "@mui/material";
 import homeBG from "../assets/homeBG.svg";
-import BlockHeader from "./headers/BlockHeader";
 import logo from "../assets/logo1.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -96,16 +95,6 @@ const SignUp = () => {
         display: "flex",
         flexDirection: "column"
       }}>
-      <BlockHeader
-        logo={logo}
-        navLinks={[
-          { name: "HOME", path: "/" },
-          { name: "GUITAR", path: "/guitartuner" },
-          { name: "BASS", path: "/basstuner" },
-          { name: "LOGIN", path: "/login" }
-        ]}
-        alignment="left"
-      />
       <Grid item xs={12}>
         <Box sx={glassMorphismStyles}>
           <Formik
