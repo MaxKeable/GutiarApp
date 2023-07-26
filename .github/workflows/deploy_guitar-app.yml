@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'Guitar-App'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5B43EEA7F64E431FB44EBD413FD260CF }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8BF2D36CF91C4192807BD364EE13DDDA }}
           package: .
