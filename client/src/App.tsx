@@ -5,6 +5,7 @@ import GuitarTuner from "./components/GuitarTuner";
 import BassTuner from "./components/BassTuner";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Game from "./components/Game";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/basstuner" element={<BassTuner />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/game" element={<Game />} />
       </Routes>
     </Router>
   );
