@@ -10,7 +10,11 @@ import Game from "./components/Game";
 
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
+<<<<<<< HEAD
+import Game from "./components/Game";
+=======
 import About from "./components/about";
+>>>>>>> main
 
 function App() {
   return (
@@ -22,7 +26,10 @@ function App() {
           <Route path="/basstuner" element={<BassTuner />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+<<<<<<< HEAD
+=======
           <Route path="/about" element={<About />} />
+>>>>>>> main
           <Route path="/game" element={<Game />} />
         </Routes>
       </Router>

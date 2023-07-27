@@ -19,7 +19,13 @@ import D4 from "../assets/D4.svg";
 import G3 from "../assets/G3.svg";
 import B2 from "../assets/B2.svg";
 import E1 from "../assets/E1.svg";
-import logo from "../assets/logo1.svg";
+
+import Nav from "./nav";
+import SidePod from "./SidePod";
+import allStrings from "../assets/All-strings.svg";
+
+
+
 
 const SVG_FLASH_CARDS = [
   { svg: E6, answer: "E" },
@@ -37,6 +43,12 @@ const Game = () => {
   const [answerOptions, setAnswerOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [SVGFlashCards, setSVGFlashCards] = useState<any[]>([]);
+
+
+  const [isSidePodOpen, setIsSidePodOpen] = useState(false);
+  const [isAllStringsVisible, setIsAllStringsVisible] = useState(true);
+
+
 
   useEffect(() => {
     // Shuffle the SVG flash cards and answer options
@@ -74,37 +86,46 @@ const Game = () => {
 
   const handleStartGame = () => {
     setFlashCardIndex(0);
+    setIsAllStringsVisible(false); // Hide the "allStrings" image when the game starts
+  };
+
+  const imageStyle = {
+    width: isSmallScreen ? 120 : 300,
+    height: isSmallScreen ? 240 : 450,
+    margin: 10
   };
 
   return (
-    <Box sx={{
-      backgroundImage: `url(${homeBG})`,
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      height: "100vh",
-    }}>
-      <BlockHeader
-        logo={logo}
-        navLinks={[
-          { name: "HOME", path: "/" },
-          { name: "GUITAR", path: "/guitartuner" },
-          { name: "BASS", path: "/basstuner" },
-          { name: "LOGIN", path: "/login" }
-        ]}
-        alignment="left"
-      />
-
+    <Box
+      sx={{
+        backgroundImage: `url(${homeBG})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh"
+      }}
+    >
+      <Nav setIsSidePodOpen={setIsSidePodOpen} />
+      {isSidePodOpen && <SidePod setIsSidePodOpen={setIsSidePodOpen} />}
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center"
-        }}>
-        <Typography variant="h6" component="h2" sx={{ marginBottom: 2 }}>
+        }}
+      >
+        <Typography
+          variant="h3"
+          component="h2"
+          sx={{ marginBottom: 0, color: "white" }}
+        >
           Can you name the string?
         </Typography>
+
+        {isAllStringsVisible && (
+          <img src={allStrings} alt="all strings" style={imageStyle} />
+        )}
 
         {flashCardIndex === -1 ? (
           <Button
@@ -114,7 +135,8 @@ const Game = () => {
             onClick={handleStartGame}
             sx={{
               width: "200px"
-            }}>
+            }}
+          >
             START
           </Button>
         ) : (
@@ -128,20 +150,39 @@ const Game = () => {
                 layout
                 key={`svg-${flashCardIndex}`}
                 style={{
-                  position: "relative",
-                  zIndex: 1,
-                  textAlign: "center",
-                  marginBottom: 8
-                }}>
-                <Card sx={{ width: 300, backgroundColor: "black", border: "solid 2px white"  }}>
+                  width: isSmallScreen ? 120 : 300,
+                  height: isSmallScreen ? 240 : 400
+                }}
+              >
+                <Card
+                  sx={{
+                    width: 300,
+                    backgroundColor: "black",
+                    border: "solid 2px white",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
                   <CardActionArea>
-                    <CardContent>
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: isSmallScreen ? 240 : 400,
+                        padding: 0 // Remove padding to ensure the SVG fills the entire container
+                      }}
+                    >
                       <motion.img
                         src={SVGFlashCards[flashCardIndex].svg}
                         alt="Flash Card"
                         style={{
                           width: isSmallScreen ? 120 : 300,
-                          height: isSmallScreen ? 240 : 400
+                          height: isSmallScreen ? 240 : 400,
+                          display: "block", // Add this to make the image a block element
+                          margin: "0 auto" // Add this to center the image horizontally
                         }}
                         initial={{ opacity: 0, rotateY: 180 }}
                         animate={{ opacity: 1, rotateY: 0 }}
@@ -162,22 +203,28 @@ const Game = () => {
                 transition={{ duration: 0.6 }}
                 layout
                 key={`answer-${flashCardIndex}`}
-                sx={{
+                style={{
                   textAlign: "center",
                   marginBottom: 8,
                   position: "relative",
                   zIndex: 0
-                }}>
+                }}
+              >
                 <Card
                   sx={{
                     backgroundColor:
                       selectedAnswer === "correct" ? "green" : "red",
                     color: "white",
                     height: isSmallScreen ? 120 : 200,
-                    width: isSmallScreen ? 120 : 200
-                  }}>
+                    width: isSmallScreen ? 120 : 200,
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
                   <CardContent>
-                    <Typography variant="h4" component="h3" color="green">
+                    <Typography variant="h4" component="h3" color="black">
                       {selectedAnswer === "correct"
                         ? "Correct!"
                         : "Wrong. Try again."}
@@ -192,15 +239,27 @@ const Game = () => {
             )}
 
             {selectedAnswer === null && (
-              <Grid container spacing={2} sx={{ marginBottom: 8 }}>
+              <Grid container spacing={2} sx={{ marginBottom: 8, mt: 2 }}>
                 {answerOptions.map((option, index) => (
-                  <Grid item xs={6} sm={4} md={2} key={index}>
+                  <Grid
+                    item
+                    xs={6}
+                    sm={4}
+                    md={2}
+                    key={index}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center"
+                    }}
+                  >
                     <Button
                       fullWidth
                       variant="contained"
                       color="primary"
                       onClick={() => handleAnswerSelection(option)}
-                      sx={{ maxWidth: "100px" }}>
+                      sx={{ maxWidth: "100px" }}
+                    >
                       {option}
                     </Button>
                   </Grid>
@@ -216,12 +275,21 @@ const Game = () => {
                 transition={{ duration: 0.6 }}
                 layout
                 key={`next-button-${flashCardIndex}`}
-                sx={{ marginBottom: 8, position: "relative", zIndex: 0 }}>
+                style={{
+                  marginBottom: 8,
+                  position: "relative",
+                  zIndex: 0,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center"
+                }}
+              >
                 <Button
                   variant="contained"
                   color="primary"
                   fullWidth
-                  onClick={handleNextCard}>
+                  onClick={handleNextCard}
+                >
                   Next
                 </Button>
               </motion.div>
