@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import * as Pitchfinder from "pitchfinder";
 
 let lastUpdateTime = 0;
@@ -105,7 +105,7 @@ const AudioNote: React.FC = () => {
 
     if (pitch !== null) {
       const currentTime = performance.now();
-      if (currentTime - lastUpdateTime > 500) {
+      if (currentTime - lastUpdateTime > 1000) {
         const noteInfo = frequencyToNote(pitch);
         setFrequency(pitch);
         setNote(noteInfo.note);
@@ -118,21 +118,50 @@ const AudioNote: React.FC = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="center" pt={10}>
-      <Box width="400px">
-        <Button onClick={startAudioCapture} variant="contained">
-          Start Tuning
-        </Button>
-        <Typography variant="h4" sx={{ color: "#fff" }}>
-          Note: {note}
-        </Typography>
-        <Typography variant="h4" sx={{ color: "#fff" }}>
-          Tuning: {tuningIndicator}
-        </Typography>
-        <Typography variant="h4" sx={{ color: "#fff" }}>
-          Frequency (Hz): {frequency?.toFixed(2)}
-        </Typography>
-      </Box>
+    <Box pt={8}>
+      <Grid container mt={10}>
+        <Grid
+          item
+          xs={5}
+          display="flex"
+          justifyContent="flex-end"
+          alignItems="center">
+          <ButtonGroup>
+            <Button onClick={startAudioCapture} variant="contained">
+              Start Tuning
+            </Button>
+            <Button
+              variant="contained"
+              onClick={() => window.location.reload()}>
+              Stop Tuning
+            </Button>
+          </ButtonGroup>
+        </Grid>
+        <Grid item xs={2} display="flex" justifyContent="center">
+          {" "}
+          <Box
+            sx={{
+              backgroundColor: "#C17736",
+              height: "150px",
+              width: "150px",
+              borderRadius: "50%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}>
+            <Typography sx={{ fontSize: "4em" }}>{note}</Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={5}>
+          {" "}
+          <Typography variant="h4" sx={{ color: "#fff" }}>
+            Tune: {tuningIndicator}
+          </Typography>
+          <Typography variant="h4" sx={{ color: "#fff" }}>
+            Frequency (Hz): {frequency?.toFixed(2)}
+          </Typography>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

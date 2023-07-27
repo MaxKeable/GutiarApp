@@ -3,6 +3,8 @@ import React from "react";
 import guitarTUNERBG from "../assets/guitarTUNERBG.svg";
 import guitarHead from "../assets/guitarHead.svg";
 import Recording from "./guitar/recording";
+import { he } from "date-fns/locale";
+import Nav from "./nav";
 
 const GuitarTuner = () => {
   const smallScreen = useMediaQuery("(max-width:600px)");
@@ -45,6 +47,7 @@ const GuitarTuner = () => {
         backgroundPosition: "center",
         height: "100vh"
       }}>
+      <Nav setIsSidePodOpen={() => false} />
       <Recording />
       <Grid
         sx={{
@@ -52,7 +55,7 @@ const GuitarTuner = () => {
           flexDirection: "row",
           alignItems: "flex-end",
           justifyContent: "center",
-          height: "80%"
+          mt: 10
         }}>
         {/* left tuning pegs (E A D) */}
         <Grid item xs={12} sm={6} sx={{ mb: smallMarginB, mr: 1 }}>

@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
+import About from "./components/about";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/basstuner" element={<BassTuner />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Router>
     </ThemeProvider>
