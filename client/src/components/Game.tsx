@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Typography,
   Box,
@@ -24,9 +24,6 @@ import Nav from "./nav";
 import SidePod from "./SidePod";
 import allStrings from "../assets/All-strings.svg";
 
-
-
-
 const SVG_FLASH_CARDS = [
   { svg: E6, answer: "E" },
   { svg: A5, answer: "A" },
@@ -44,11 +41,8 @@ const Game = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [SVGFlashCards, setSVGFlashCards] = useState<any[]>([]);
 
-
   const [isSidePodOpen, setIsSidePodOpen] = useState(false);
   const [isAllStringsVisible, setIsAllStringsVisible] = useState(true);
-
-
 
   useEffect(() => {
     // Shuffle the SVG flash cards and answer options
@@ -103,8 +97,7 @@ const Game = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100vh"
-      }}
-    >
+      }}>
       <Nav setIsSidePodOpen={setIsSidePodOpen} />
       {isSidePodOpen && <SidePod setIsSidePodOpen={setIsSidePodOpen} />}
       <Box
@@ -113,13 +106,11 @@ const Game = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center"
-        }}
-      >
+        }}>
         <Typography
           variant="h3"
           component="h2"
-          sx={{ marginBottom: 0, color: "white" }}
-        >
+          sx={{ marginBottom: 0, color: "white" }}>
           Can you name the string?
         </Typography>
 
@@ -135,8 +126,7 @@ const Game = () => {
             onClick={handleStartGame}
             sx={{
               width: "200px"
-            }}
-          >
+            }}>
             START
           </Button>
         ) : (
@@ -152,8 +142,7 @@ const Game = () => {
                 style={{
                   width: isSmallScreen ? 120 : 300,
                   height: isSmallScreen ? 240 : 400
-                }}
-              >
+                }}>
                 <Card
                   sx={{
                     width: 300,
@@ -163,8 +152,7 @@ const Game = () => {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center"
-                  }}
-                >
+                  }}>
                   <CardActionArea>
                     <CardContent
                       sx={{
@@ -173,8 +161,7 @@ const Game = () => {
                         alignItems: "center",
                         height: isSmallScreen ? 240 : 400,
                         padding: 0 // Remove padding to ensure the SVG fills the entire container
-                      }}
-                    >
+                      }}>
                       <motion.img
                         src={SVGFlashCards[flashCardIndex].svg}
                         alt="Flash Card"
@@ -208,8 +195,7 @@ const Game = () => {
                   marginBottom: 8,
                   position: "relative",
                   zIndex: 0
-                }}
-              >
+                }}>
                 <Card
                   sx={{
                     backgroundColor:
@@ -221,8 +207,7 @@ const Game = () => {
                     flexDirection: "column",
                     justifyContent: "center",
                     alignItems: "center"
-                  }}
-                >
+                  }}>
                   <CardContent>
                     <Typography variant="h4" component="h3" color="black">
                       {selectedAnswer === "correct"
@@ -251,15 +236,13 @@ const Game = () => {
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center"
-                    }}
-                  >
+                    }}>
                     <Button
                       fullWidth
                       variant="contained"
                       color="primary"
                       onClick={() => handleAnswerSelection(option)}
-                      sx={{ maxWidth: "100px" }}
-                    >
+                      sx={{ maxWidth: "100px" }}>
                       {option}
                     </Button>
                   </Grid>
@@ -282,14 +265,12 @@ const Game = () => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center"
-                }}
-              >
+                }}>
                 <Button
                   variant="contained"
                   color="primary"
                   fullWidth
-                  onClick={handleNextCard}
-                >
+                  onClick={handleNextCard}>
                   Next
                 </Button>
               </motion.div>
