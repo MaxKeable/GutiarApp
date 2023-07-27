@@ -3,14 +3,18 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   typography: {
     h1: {
-      fontSize: '2.5rem',
+      fontSize: '6em',
+      color: '#fff',
+      fontFamily: 'Londrina Outline, cursive',
       fontWeight: 500,
       lineHeight: 1.2,
     },
     h2: {
-      fontSize: '2rem',
+      fontSize: '5.5em',
+      color: '#C17736',
+      fontFamily: 'Londrina Outline, cursive',
       fontWeight: 500,
-      lineHeight: 1.3,
+      lineHeight: 1.2,
     },
     h3: {
       fontSize: '1.75rem',
@@ -18,9 +22,10 @@ const theme = createTheme({
       lineHeight: 1.4,
     },
     h4: {
-      fontSize: '1.5rem',
+      fontSize: '2.5rem',
       fontWeight: 500,
       lineHeight: 1.5,
+      color: '#fff',
     },
     h5: {
       fontSize: '1.25rem',
@@ -31,6 +36,18 @@ const theme = createTheme({
       fontSize: '1rem',
       fontWeight: 500,
       lineHeight: 1.7,
+    },
+    body1: {
+      fontSize: '1.8rem',
+      fontWeight: 400,
+      lineHeight: 1.8,
+      color: '#fff',
+    },
+        body2: {
+      fontSize: '1.6rem',
+      fontWeight: 400,
+      lineHeight: 1.8,
+      color: '#fff',
     },
   },
   components: {

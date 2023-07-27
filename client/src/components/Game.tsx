@@ -19,9 +19,13 @@ import D4 from "../assets/D4.svg";
 import G3 from "../assets/G3.svg";
 import B2 from "../assets/B2.svg";
 import E1 from "../assets/E1.svg";
+
 import Nav from "./nav";
 import SidePod from "./SidePod";
 import allStrings from "../assets/All-strings.svg";
+
+
+
 
 const SVG_FLASH_CARDS = [
   { svg: E6, answer: "E" },
@@ -40,8 +44,11 @@ const Game = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [SVGFlashCards, setSVGFlashCards] = useState<any[]>([]);
 
+
   const [isSidePodOpen, setIsSidePodOpen] = useState(false);
   const [isAllStringsVisible, setIsAllStringsVisible] = useState(true);
+
+
 
   useEffect(() => {
     // Shuffle the SVG flash cards and answer options

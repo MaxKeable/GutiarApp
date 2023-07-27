@@ -1,4 +1,4 @@
-import { Box, Button, Grid, useMediaQuery } from "@mui/material";
+import { Box, Button, Grid, Typography, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import homeBG from "../assets/homeBG.svg";
@@ -56,6 +56,15 @@ const Home = () => {
       {/* Guitar */}
       <Nav setIsSidePodOpen={setIsSidePodOpen} />
       {isSidePodOpen && <SidePod setIsSidePodOpen={setIsSidePodOpen} />}
+      <Box display="flex" flexDirection="column" alignItems="center" mt={8}>
+        <Typography variant="h1" sx={{ color: "#C17736" }}>
+          Welcome to Guitar Mate
+        </Typography>
+        <Typography variant="h4" width="80%" textAlign="center">
+          Perfectly tuned strings and a deep understanding of guitar concepts
+          are just a click away. Tune in and turn learning into a game.
+        </Typography>
+      </Box>
       <Grid container>
         <Grid item xs={12} sm={6}>
           <Box
