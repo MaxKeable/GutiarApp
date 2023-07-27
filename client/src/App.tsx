@@ -10,6 +10,7 @@ import Game from "./components/Game";
 
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
+import About from "./components/about";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/basstuner" element={<BassTuner />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/about" element={<About />} />
           <Route path="/game" element={<Game />} />
         </Routes>
       </Router>
