@@ -119,15 +119,17 @@ const AudioNote: React.FC = () => {
 
   return (
     <Box pt={8}>
-      <Grid container mt={10}>
+      <Grid container mt={1}>
         <Grid
           item
-          xs={5}
+          xs={12}
+          sm={5}
+          mb={2}
           display="flex"
-          justifyContent="flex-end"
+          justifyContent="center"
           alignItems="center">
           <ButtonGroup>
-            <Button onClick={startAudioCapture} variant="contained">
+            <Button  onClick={startAudioCapture} variant="contained">
               Start Tuning
             </Button>
             <Button
@@ -137,7 +139,7 @@ const AudioNote: React.FC = () => {
             </Button>
           </ButtonGroup>
         </Grid>
-        <Grid item xs={2} display="flex" justifyContent="center">
+        <Grid item xs={12} sm={2} display="flex" justifyContent="center">
           {" "}
           <Box
             sx={{
@@ -147,17 +149,18 @@ const AudioNote: React.FC = () => {
               borderRadius: "50%",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center"
+              justifyContent: "center",
+              margin: "5px"
             }}>
             <Typography sx={{ fontSize: "4em" }}>{note}</Typography>
           </Box>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={12} sm={5} alignItems="center">
           {" "}
-          <Typography variant="h4" sx={{ color: "#fff" }}>
+          <Typography variant="h5" justifyContent="center" alignItems="center" sx={{ color: "#fff" }}>
             Tune: {tuningIndicator}
           </Typography>
-          <Typography variant="h4" sx={{ color: "#fff" }}>
+          <Typography variant="h5" justifyContent="center" alignItems="center" sx={{ color: "#fff" }}>
             Frequency (Hz): {frequency?.toFixed(2)}
           </Typography>
         </Grid>

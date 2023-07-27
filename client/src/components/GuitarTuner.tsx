@@ -1,4 +1,5 @@
 import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
+import React from "react";
 import guitarTUNERBG from "../assets/guitarTUNERBG.svg";
 import guitarHead from "../assets/guitarHead.svg";
 import Recording from "./guitar/recording";
