@@ -28,9 +28,9 @@ router.post("/", async (req: Request, res: Response) => {
     // Save the new user to the database
     await newUser.save();
     await sendEmail(req, res);
-    const accessTocken = Auth.signToken({ id: newUser._id })
+    const accessToken = Auth.signToken({ id: newUser._id })
     // Return the registered user as the response
-    res.status(200).json({ message: "Signup successful" });
+    res.status(200).json({ message: "Signup successful", accessToken: accessToken });
   } catch (error) {
     console.error("Error during signup:", error);
     res.status(500).json({  "message" : error.message });

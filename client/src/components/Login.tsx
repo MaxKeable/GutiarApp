@@ -14,18 +14,18 @@ import homeBG from "../assets/homeBG.svg";
 import { Form, Formik } from "formik";
 
 const Login = () => {
-  const [emailError, setEmailError] = useState("");
+ 
   const [isDialogOpen, setDialogOpen] = useState(false);
 
   const handleSubmitForm = async (values: any) => {
     // Validate email field
-    if (!values.email) {
-      setEmailError("Email is required");
-    } else if (!isValidEmail(values.email)) {
-      setEmailError("Invalid email address");
-    } else {
-      setEmailError("");
-    }
+    // if (!values.email) {
+    //   setEmailError("Email is required");
+    // } else if (!isValidEmail(values.email)) {
+    //   setEmailError("Invalid email address");
+    // } else {
+    //   setEmailError("");
+    // }
 
     // Handle form submission logic here
     const response = await fetch("/api/login", {
@@ -33,11 +33,14 @@ const Login = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values)
     });
-    const data = await response.json();
-    console.log(data);
-
-    setDialogOpen(true);
-    return data;
+    if (response.ok) {
+      const data = await response.json();
+      localStorage.setItem("userCredentials", data.accessToken);
+      document.location.replace("/game");
+      console.log(data);
+      setDialogOpen(true);
+      return data;
+    }
 
     // Open the confirmation dialog
   };
@@ -85,71 +88,79 @@ const Login = () => {
       <Grid item xs={12}>
         <Box sx={glassMorphismStyles}>
           <Formik
-            initialValues={{ name: "", email: "", password: "" }}
+            initialValues={{ email: "", password: "" }}
             onSubmit={handleSubmitForm}>
-            <Form>
-              <TextField
-                id="standard-basic"
-                label="Email"
-                variant="standard"
-                name="email"
-                fullWidth
-                sx={{ my: 1 }}
-                inputProps={{
-                  style: textFieldStyle
-                }}
-                error={Boolean(emailError)}
-                helperText={emailError}
-                onBlur={(e) => {
-                  if (!e.target.value) {
-                    setEmailError("Email is required");
-                  } else if (!isValidEmail(e.target.value)) {
-                    setEmailError("Invalid email address");
-                  } else {
-                    setEmailError("");
-                  }
-                }}
-              />
-              <TextField
-                id="standard-basic"
-                label="password"
-                variant="standard"
-                name="password"
-                fullWidth
-                sx={{ my: 1 }}
-                inputProps={{
-                  style: textFieldStyle
-                }}
-              />
-              <Button
-                type="submit"
-                sx={{
-                  borderRadius: "30px",
-                  height: "60px",
-                  width: "70%",
-                  justifyContent: "center",
-                  backgroundColor: "#BC6C25",
-                  color: "white",
-                  fontSize: "1.2rem",
-                  mt: 7,
-                  alignSelf: "center", // Add this style to center the button vertically
-                  marginLeft: "50px"
-                }}>
-                Submit
-              </Button>
+            {({ values, handleChange, handleBlur }) => (
+              <Form>
+                <TextField
+                  id="standard-basic"
+                  label="Email"
+                  variant="standard"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  fullWidth
+                  sx={{ my: 1 }}
+                  inputProps={{
+                    style: textFieldStyle
+                  }}
+                  error={Boolean(emailError)}
+                  helperText={emailError}
+                  // onBlur={(e) => {
+                  //   if (!e.target.value) {
+                  //     setEmailError("Email is required");
+                  //   } else if (!isValidEmail(e.target.value)) {
+                  //     setEmailError("Invalid email address");
+                  //   } else {
+                  //     setEmailError("");
+                  //   }
+                  // }}
+                />
+                <TextField
+                  id="standard-basic"
+                  label="password"
+                  variant="standard"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  fullWidth
+                  sx={{ my: 1 }}
+                  inputProps={{
+                    style: textFieldStyle
+                  }}
+                />
+                <Button
+                  type="submit"
+                  sx={{
+                    borderRadius: "30px",
+                    height: "60px",
+                    width: "70%",
+                    justifyContent: "center",
+                    backgroundColor: "#BC6C25",
+                    color: "white",
+                    fontSize: "1.2rem",
+                    mt: 7,
+                    alignSelf: "center", // Add this style to center the button vertically
+                    marginLeft: "50px"
+                  }}>
+                  Submit
+                </Button>
 
-              <Dialog open={isDialogOpen} onClose={() => setDialogOpen(false)}>
-                <DialogTitle>Confirmation</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    Your form has been submitted successfully!
-                  </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={() => setDialogOpen(false)}>Close</Button>
-                </DialogActions>
-              </Dialog>
-            </Form>
+                <Dialog
+                  open={isDialogOpen}
+                  onClose={() => setDialogOpen(false)}>
+                  <DialogTitle>Confirmation</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>
+                      Your form has been submitted successfully!
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={() => setDialogOpen(false)}>Close</Button>
+                  </DialogActions>
+                </Dialog>
+              </Form>
+            )}
           </Formik>
         </Box>
       </Grid>

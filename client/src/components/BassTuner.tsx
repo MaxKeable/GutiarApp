@@ -1,5 +1,4 @@
 import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
-import React from "react";
 import bassAPPbg from "../assets/bassBG2.svg";
 import bassHead from "../assets/bassHead.svg";
 

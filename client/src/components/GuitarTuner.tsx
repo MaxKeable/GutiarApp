@@ -3,7 +3,7 @@ import React from "react";
 import guitarTUNERBG from "../assets/guitarTUNERBG.svg";
 import guitarHead from "../assets/guitarHead.svg";
 import Recording from "./guitar/recording";
-import { he } from "date-fns/locale";
+
 import Nav from "./nav";
 
 const GuitarTuner = () => {

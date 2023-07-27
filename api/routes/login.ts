@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import User from "../models/user"; // Assuming you have a User model defined using Mongoose
+import { Auth } from "../utils/auth"
 
 const router = express.Router();
 
@@ -7,7 +8,7 @@ const router = express.Router();
 router.post("/", async (req: Request, res: Response) => {
     try {
   
-         const { name, email, password } = req.body;
+         const { email, password } = req.body;
   
       // Check if the email field is present in the request
       if (!email) {
@@ -28,9 +29,11 @@ router.post("/", async (req: Request, res: Response) => {
         return res.status(401).json({ error: "Invalid credentials" });
         }
 
-  
+        const accessToken = Auth.signToken({ id: user._id })
       // If the user is found, you can send back the user data in the response
-      return  res.status(200).json({message: "Login successful"});
+
+      return  res.status(200).json({message: "Login successful", accessToken: accessToken});
+      
 
      
     } catch (err) {

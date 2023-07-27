@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import homeBG from "../assets/homeBG.svg";
 import Nav from "./nav";
 
