@@ -14,20 +14,10 @@ import homeBG from "../assets/homeBG.svg";
 import { Form, Formik } from "formik";
 
 const Login = () => {
- 
   const [isDialogOpen, setDialogOpen] = useState(false);
 
   const handleSubmitForm = async (values: any) => {
-    // Validate email field
-    // if (!values.email) {
-    //   setEmailError("Email is required");
-    // } else if (!isValidEmail(values.email)) {
-    //   setEmailError("Invalid email address");
-    // } else {
-    //   setEmailError("");
-    // }
-
-    // Handle form submission logic here
+ 
     const response = await fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -43,11 +33,6 @@ const Login = () => {
     }
 
     // Open the confirmation dialog
-  };
-
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
   };
 
   const glassMorphismStyles = {
@@ -104,17 +89,9 @@ const Login = () => {
                   inputProps={{
                     style: textFieldStyle
                   }}
-                  // error={Boolean(emailError)}
-                  // helperText={emailError}
-                  // onBlur={(e) => {
-                  //   if (!e.target.value) {
-                  //     setEmailError("Email is required");
-                  //   } else if (!isValidEmail(e.target.value)) {
-                  //     setEmailError("Invalid email address");
-                  //   } else {
-                  //     setEmailError("");
-                  //   }
-                  // }}
+
+               
+
                 />
                 <TextField
                   id="standard-basic"
