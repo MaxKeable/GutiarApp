@@ -1,15 +1,16 @@
 import { Box, Button, Grid, useMediaQuery } from "@mui/material";
 import { Link } from "react-router-dom";
-import React from "react";
+import { useState } from "react";
 import homeBG from "../assets/homeBG.svg";
 import G from "../assets/G.svg";
 import B from "../assets/b.svg";
-import BlockHeader from "./headers/BlockHeader";
-import logo from "../assets/logo1.svg";
+import Nav from "./nav";
+import SidePod from "./SidePod";
 
 const Home = () => {
   // media query
   const smallScreen = useMediaQuery("(max-width:600px)");
+  const [isSidePodOpen, setIsSidePodOpen] = useState(false);
 
   let imgWidthA;
   let imgHeightA;
@@ -49,21 +50,12 @@ const Home = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        maxHeight: "100vh",
         displayflex: "flex",
         flexDirection: "column"
       }}>
       {/* Guitar */}
-      <BlockHeader
-        logo={logo}
-        navLinks={[
-          { name: "HOME", path: "/" },
-          { name: "GUITAR", path: "/guitartuner" },
-          { name: "BASS", path: "/basstuner" },
-          { name: "LOGIN", path: "/login" },
-        ]}
-        alignment="left"
-      />
+      <Nav setIsSidePodOpen={setIsSidePodOpen} />
+      {isSidePodOpen && <SidePod setIsSidePodOpen={setIsSidePodOpen} />}
       <Grid container>
         <Grid item xs={12} sm={6}>
           <Box

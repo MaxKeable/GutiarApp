@@ -19,7 +19,6 @@ import D4 from "../assets/D4.svg";
 import G3 from "../assets/G3.svg";
 import B2 from "../assets/B2.svg";
 import E1 from "../assets/E1.svg";
-import BlockHeader from "./headers/BlockHeader";
 import logo from "../assets/logo1.svg";
 
 const SVG_FLASH_CARDS = [

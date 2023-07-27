@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import * as Pitchfinder from "pitchfinder";
 
