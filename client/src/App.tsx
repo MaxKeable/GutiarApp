@@ -5,6 +5,9 @@ import GuitarTuner from "./components/GuitarTuner";
 import BassTuner from "./components/BassTuner";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Game from "./components/Game";
+
+
 import { ThemeProvider } from "@mui/material";
 import theme from "./theme";
 import About from "./components/about";
@@ -20,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/about" element={<About />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </Router>
     </ThemeProvider>

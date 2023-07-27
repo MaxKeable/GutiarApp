@@ -1,5 +1,5 @@
 // signup.ts
-
+import { sendEmail } from "../utils/sendEmail";
 import express, { Request, Response } from "express";
 import User from "../models/user"; // Make sure to provide the correct path to your User model
 
@@ -26,6 +26,7 @@ router.post("/", async (req: Request, res: Response) => {
 
     // Save the new user to the database
     await newUser.save();
+    await sendEmail(req, res);
 
     // Return the registered user as the response
     res.status(200).json({ message: "Signup successful" });
