@@ -32,13 +32,13 @@ const Home = () => {
     header = "4rem";
     text = "1.2rem";
     align = "left";
-    textWidth = "90%";
+    textWidth = "98%";
   } else {
     imgWidthA = "350px";
     imgHeightA = "350px";
     imgWidthB = "400px";
     imgHeightB = "400px";
-    boxHeightA = "90vh";
+    boxHeightA = "85vh";
     boxHeightB = "80vh";
     header = "6rem";
     text = "2rem";

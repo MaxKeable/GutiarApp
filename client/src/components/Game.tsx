@@ -86,7 +86,13 @@ const Game = () => {
   const imageStyle = {
     width: isSmallScreen ? "auto" : "auto",
     height: isSmallScreen ? 440 : 450,
-    margin: 50
+    margin: isSmallScreen ? 30 : 50
+  };
+
+  const headerStyle = {
+    fontSize: isSmallScreen ? "3rem" : "5rem",
+    marginTop: isSmallScreen ? "3rem" : "2rem",
+    marginBottom: isSmallScreen ? "1rem" : "2rem"
   };
 
   return (
@@ -107,10 +113,7 @@ const Game = () => {
           justifyContent: "center",
           alignItems: "center"
         }}>
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ marginBottom: 0, color: "white" }}>
+        <Typography variant="h2" component="h2" sx={headerStyle}>
           Name The String
         </Typography>
 
@@ -140,12 +143,12 @@ const Game = () => {
                 layout
                 key={`svg-${flashCardIndex}`}
                 style={{
-                  width: isSmallScreen ? 120 : 300,
-                  height: isSmallScreen ? 240 : 400
+                  width: isSmallScreen ? 180 : "auto",
+                  height: isSmallScreen ? 300 : 400
                 }}>
                 <Card
                   sx={{
-                    width: 300,
+                    maxWidth: isSmallScreen ? 280 : 240,
                     backgroundColor: "black",
                     border: "solid 2px white",
                     display: "flex",
@@ -159,15 +162,15 @@ const Game = () => {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        height: isSmallScreen ? 240 : 400,
+                        height: isSmallScreen ? 280 : 400,
                         padding: 0 // Remove padding to ensure the SVG fills the entire container
                       }}>
                       <motion.img
                         src={SVGFlashCards[flashCardIndex].svg}
                         alt="Flash Card"
                         style={{
-                          width: isSmallScreen ? 120 : 300,
-                          height: isSmallScreen ? 240 : 400,
+                          width: isSmallScreen ? 180 : 300,
+                          height: isSmallScreen ? 280 : 400,
                           display: "block", // Add this to make the image a block element
                           margin: "0 auto" // Add this to center the image horizontally
                         }}
@@ -201,20 +204,28 @@ const Game = () => {
                     backgroundColor:
                       selectedAnswer === "correct" ? "green" : "red",
                     color: "white",
-                    height: isSmallScreen ? 120 : 200,
-                    width: isSmallScreen ? 120 : 200,
+                    height: isSmallScreen ? 200 : 250,
+                    width: isSmallScreen ? 250 : 300,
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
-                    alignItems: "center"
+                    alignItems: "center",
+                    border: "solid 2px white",
+                    borderRadius: "10px",
+                    marginBottom: 8
                   }}>
                   <CardContent>
-                    <Typography variant="h4" component="h3" color="black">
+                    <Typography
+                      variant="h4"
+                      component="h3"
+                      color="black"
+                      sx={{ fontWeight: "bold" }}>
                       {selectedAnswer === "correct"
                         ? "Correct!"
-                        : "Wrong. Try again."}
+                        : "Oh No! \n Not Quite!"}
                     </Typography>
-                    <Typography variant="h6" component="h4" color="green">
+
+                    <Typography variant="h6" component="h4" color="white">
                       The correct answer is:{" "}
                       {SVGFlashCards[flashCardIndex].answer}
                     </Typography>
