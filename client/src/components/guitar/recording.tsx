@@ -105,7 +105,7 @@ const AudioNote: React.FC = () => {
 
     if (pitch !== null) {
       const currentTime = performance.now();
-      if (currentTime - lastUpdateTime > 1000) {
+      if (currentTime - lastUpdateTime > 500) {
         const noteInfo = frequencyToNote(pitch);
         setFrequency(pitch);
         setNote(noteInfo.note);

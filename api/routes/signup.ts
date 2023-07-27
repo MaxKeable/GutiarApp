@@ -2,6 +2,7 @@
 import { sendEmail } from "../utils/sendEmail";
 import express, { Request, Response } from "express";
 import User from "../models/user"; // Make sure to provide the correct path to your User model
+import { Auth } from "../utils/auth"
 
 const router = express.Router();
 
@@ -27,7 +28,7 @@ router.post("/", async (req: Request, res: Response) => {
     // Save the new user to the database
     await newUser.save();
     await sendEmail(req, res);
-
+    const accessTocken = Auth.signToken({ id: newUser._id })
     // Return the registered user as the response
     res.status(200).json({ message: "Signup successful" });
   } catch (error) {

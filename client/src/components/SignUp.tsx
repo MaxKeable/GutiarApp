@@ -72,7 +72,6 @@ const SignUp = () => {
         console.error("Registration failed!");
         // You can show an error message to the user or handle the error accordingly
       }
-      console.log(values.username, values.email, values.password);
     } catch (error) {
       console.error("Error during registration:", error);
       // Handle any errors that occurred during the registration process
@@ -155,11 +154,7 @@ const SignUp = () => {
                   error
                 />
 
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  disabled={isSubmitting}>
+                <Button type="submit" variant="contained" color="primary">
                   Sign Up
                 </Button>
               </Form>
