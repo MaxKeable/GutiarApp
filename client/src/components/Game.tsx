@@ -84,9 +84,9 @@ const Game = () => {
   };
 
   const imageStyle = {
-    width: isSmallScreen ? 120 : 300,
-    height: isSmallScreen ? 240 : 450,
-    margin: 10
+    width: isSmallScreen ? "auto" : "auto",
+    height: isSmallScreen ? 440 : 450,
+    margin: 50
   };
 
   return (
@@ -108,10 +108,10 @@ const Game = () => {
           alignItems: "center"
         }}>
         <Typography
-          variant="h3"
+          variant="h2"
           component="h2"
           sx={{ marginBottom: 0, color: "white" }}>
-          Can you name the string?
+          Name The String
         </Typography>
 
         {isAllStringsVisible && (

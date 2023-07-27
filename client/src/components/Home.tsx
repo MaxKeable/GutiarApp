@@ -18,6 +18,10 @@ const Home = () => {
   let imgHeightB;
   let boxHeightA;
   let boxHeightB;
+  let header;
+  let text;
+  let align;
+  let textWidth;
   if (smallScreen) {
     imgWidthA = "250px";
     imgHeightA = "300px";
@@ -25,6 +29,10 @@ const Home = () => {
     imgHeightB = "350px";
     boxHeightA = "50vh";
     boxHeightB = "50vh";
+    header = "4rem";
+    text = "1.2rem";
+    align = "left";
+    textWidth = "90%";
   } else {
     imgWidthA = "350px";
     imgHeightA = "350px";
@@ -32,6 +40,10 @@ const Home = () => {
     imgHeightB = "400px";
     boxHeightA = "90vh";
     boxHeightB = "80vh";
+    header = "6rem";
+    text = "2rem";
+    align = "center";
+    textWidth = "70%";
   }
 
   const imageStyle = {
@@ -51,16 +63,19 @@ const Home = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         displayflex: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}>
       {/* Guitar */}
       <Nav setIsSidePodOpen={setIsSidePodOpen} />
       {isSidePodOpen && <SidePod setIsSidePodOpen={setIsSidePodOpen} />}
-      <Box display="flex" flexDirection="column" alignItems="center" mt={8}>
-        <Typography variant="h1" sx={{ color: "#C17736" }}>
+      <Box display="flex" flexDirection="column" alignItems="center" mt={8} ml={2}>
+        <Typography variant="h1" sx={{ color: "#C17736", fontSize: header, }} >
           Welcome to Guitar Mate
         </Typography>
-        <Typography variant="h4" width="80%" textAlign="center">
+        <Typography variant="h4" mt={3} sx={{ width: textWidth, fontSize: text, textAlign: align }}>
+
           Perfectly tuned strings and a deep understanding of guitar concepts
           are just a click away. Tune in and turn learning into a game.
         </Typography>

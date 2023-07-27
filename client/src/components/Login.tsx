@@ -8,7 +8,8 @@ import {
   DialogContentText,
   DialogTitle,
   Grid,
-  TextField
+  TextField,
+  useMediaQuery
 } from "@mui/material";
 import homeBG from "../assets/homeBG.svg";
 import { Form, Formik } from "formik";
@@ -35,6 +36,14 @@ const Login = () => {
     // Open the confirmation dialog
   };
 
+  const smallScreen = useMediaQuery("(max-width:600px)");
+   let boxWidth;
+  if (smallScreen) {
+    boxWidth = "80%";
+  } else {
+    boxWidth = "30%";
+  }
+
   const glassMorphismStyles = {
     backdropFilter: "blur(10px) brightness(100%)",
     background:
@@ -42,8 +51,8 @@ const Login = () => {
     borderRadius: "20px",
     border: "1px solid",
     borderColor: "#D9D9D9",
-    height: "55%",
-    width: "30%",
+    height: "40%",
+    width: boxWidth,
     position: "absolute",
     top: "50%",
     left: "50%",

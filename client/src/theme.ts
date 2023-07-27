@@ -62,6 +62,8 @@ const theme = createTheme({
         contained: {
           backgroundColor: '#fff',
           color: 'black',
+          border: '2px solid #eec17f',
+          boxShadow: '0px 0px 4px rgba(238, 193, 127, 1)',
           fontSize: "1.1rem",
           fontWeight: 600,
           '&:hover': {
