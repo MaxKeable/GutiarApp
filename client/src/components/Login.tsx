@@ -44,11 +44,6 @@ const Login = () => {
     // Open the confirmation dialog
   };
 
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
   const glassMorphismStyles = {
     backdropFilter: "blur(10px) brightness(100%)",
     background:
@@ -103,17 +98,6 @@ const Login = () => {
                   inputProps={{
                     style: textFieldStyle
                   }}
-                  // error={Boolean(emailError)}
-                  // helperText={emailError}
-                  // onBlur={(e) => {
-                  //   if (!e.target.value) {
-                  //     setEmailError("Email is required");
-                  //   } else if (!isValidEmail(e.target.value)) {
-                  //     setEmailError("Invalid email address");
-                  //   } else {
-                  //     setEmailError("");
-                  //   }
-                  // }}
                 />
                 <TextField
                   id="standard-basic"
