@@ -104,8 +104,8 @@ const Login = () => {
                   inputProps={{
                     style: textFieldStyle
                   }}
-                  error={Boolean(emailError)}
-                  helperText={emailError}
+                  // error={Boolean(emailError)}
+                  // helperText={emailError}
                   // onBlur={(e) => {
                   //   if (!e.target.value) {
                   //     setEmailError("Email is required");
