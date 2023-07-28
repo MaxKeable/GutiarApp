@@ -22,6 +22,32 @@ const validationSchema = Yup.object().shape({
 });
 
 const SidePod = (props: { setIsSidePodOpen: Function }) => {
+  const updateUser = async (values: any, token: any) => {
+    try {
+      const response = await fetch("/api/updateUserInfo", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ values })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const user = await response.json();
+      console.log(user);
+    } catch (error) {
+      console.error("An error occurred while updating the user:", error);
+    }
+  };
+
+  const handleUpdateUser = (values: any) => {
+    updateUser(values, localStorage.getItem("token"));
+  };
+
   return (
     <Paper
       sx={{
@@ -53,7 +79,7 @@ const SidePod = (props: { setIsSidePodOpen: Function }) => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          console.log(values);
+          handleUpdateUser(values);
         }}>
         {({ values, handleBlur, handleChange, errors, touched }) => (
           <Form>
