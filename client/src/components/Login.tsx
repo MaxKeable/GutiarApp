@@ -18,7 +18,6 @@ const Login = () => {
   const [isDialogOpen, setDialogOpen] = useState(false);
 
   const handleSubmitForm = async (values: any) => {
- 
     const response = await fetch("/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,7 +36,7 @@ const Login = () => {
   };
 
   const smallScreen = useMediaQuery("(max-width:600px)");
-   let boxWidth;
+  let boxWidth;
   if (smallScreen) {
     boxWidth = "80%";
   } else {
@@ -98,9 +97,6 @@ const Login = () => {
                   inputProps={{
                     style: textFieldStyle
                   }}
-
-               
-
                 />
                 <TextField
                   id="standard-basic"
