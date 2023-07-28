@@ -80,6 +80,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          fontSize: '1.2rem',
+          fontWeight: 500,
+          color: 'black',
+        },
+      },
+    }
   },
 });
 
