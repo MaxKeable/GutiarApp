@@ -1,28 +1,31 @@
 import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import bassAPPbg from "../assets/bassBG2.svg";
 import bassHead from "../assets/bassHead.svg";
+import guitarHead from "../assets/guitarHead.svg"; // Assuming you have the guitarHead image
+import Recording from "./guitar/recording";
+import Nav from "./nav";
 
-const GuitarTuner = () => {
+const BassTuner = () => {
   const smallScreen = useMediaQuery("(max-width:600px)");
 
-  let guitarHeadHeight;
+  let bassHeadHeight;
   let smallMarginB;
   let tunerHeight;
   let tunerWidth;
   if (smallScreen) {
-    guitarHeadHeight = "330px";
+    bassHeadHeight = "330px";
     smallMarginB = 17;
     tunerHeight = "33px";
     tunerWidth = "33px";
   } else {
-    guitarHeadHeight = "350px";
+    bassHeadHeight = "330px";
     smallMarginB = 18;
     tunerHeight = "35px";
     tunerWidth = "35px";
   }
 
   const imageStyle = {
-    height: guitarHeadHeight
+    height: bassHeadHeight
   };
 
   const tunerStyle = {
@@ -40,12 +43,12 @@ const GuitarTuner = () => {
   };
 
   return (
-    <Grid
+    <Box
       sx={{
         backgroundColor: "black",
         display: "flex",
-        flexDirection: "row",
-        alignItems: "flex-end",
+        flexDirection: "column",
+        alignItems: "center",
         justifyContent: "center",
         backgroundImage: `url(${bassAPPbg})`,
         backgroundRepeat: "no-repeat",
@@ -53,34 +56,58 @@ const GuitarTuner = () => {
         backgroundPosition: "center",
         height: "100vh",
         width: "100vw"
-      }}>
-      {/* left tuning pegs (E A D G) */}
-      <Grid item xs={12} sm={6} sx={{ mb: smallMarginB }}>
-        <Box>
-          <Typography variant="body1" style={tunerStyle} sx={{ ml: 3}}>
+      }}
+    >
+      <Box sx={{ width: "100%", flexGrow: 1 }}>
+        {/* Nav taking full width */}
+        <Nav setIsSidePodOpen={() => false} />
+        {/* Recording underneath the Nav */}
+        <Recording />
+      </Box>
+
+      {/* bass head and guitar tuners */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          mt: 0, // Adjust this value as needed to create spacing between bassHead and guitarHead
+        }}
+      >
+        {/* left tuning pegs (E A D G) */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "-130px",
+          }}
+        >
+          <Typography variant="body1" style={tunerStyle} sx={{ ml: 3 }}>
             G
           </Typography>
-          <Typography variant="body1" style={tunerStyle} sx={{ ml: 2}}>
+          <Typography variant="body1" style={tunerStyle} sx={{ ml: 2 }}>
             D
           </Typography>
-          <Typography variant="body1" style={tunerStyle} sx={{ ml: 1}}>
+          <Typography variant="body1" style={tunerStyle} sx={{ ml: 1 }}>
             A
           </Typography>
-          <Typography variant="body1" style={tunerStyle} sx={{ mr: 0}}>
+          <Typography variant="body1" style={tunerStyle} sx={{ mr: 0 }}>
             E
           </Typography>
         </Box>
-      </Grid>
 
-      {/* guitar head */}
-      <Grid item xs={12} sm={6}>
+        {/* bass head */}
         <Box>
-          <img src={bassHead} alt="guitar head" style={imageStyle} />
+          <img src={bassHead} alt="bass head" style={imageStyle} />
         </Box>
-      </Grid>
 
-    </Grid>
+    
+      </Box>
+    </Box>
   );
 };
 
-export default GuitarTuner;
+export default BassTuner;

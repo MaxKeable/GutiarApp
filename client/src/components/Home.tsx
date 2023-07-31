@@ -80,7 +80,7 @@ const Home = () => {
         <Typography variant="h1" sx={{ color: "#C17736", fontSize: header, }} >
           Welcome to Guitar Mate
         </Typography>
-        <Typography variant="h4" mt={3} sx={{ width: textWidth, fontSize: text, textAlign: align }}>
+        <Typography variant="h4" mt={3} mb={2} sx={{ width: textWidth, fontSize: text, textAlign: align }}>
 
           Perfectly tuned strings and a deep understanding of guitar concepts
           are just a click away. Tune in and turn learning into a game.
