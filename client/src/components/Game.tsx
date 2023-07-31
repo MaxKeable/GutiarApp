@@ -102,7 +102,7 @@ const Game = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "100vh"
+        height: "130vh"
       }}>
       <Nav setIsSidePodOpen={setIsSidePodOpen} />
       {isSidePodOpen && <SidePod setIsSidePodOpen={setIsSidePodOpen} />}

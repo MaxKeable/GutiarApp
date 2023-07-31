@@ -67,6 +67,8 @@ const SignUp = () => {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("userCredentials", data.accessToken);
+        
+        document.location.replace("/game")
         // Registration successful, show success message or redirect
         console.log("User registered successfully!");
         // You can show a success message to the user or redirect to another page

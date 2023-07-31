@@ -45,7 +45,7 @@ const GuitarTuner = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "100vh"
+        height: "115vh"
       }}>
       <Nav setIsSidePodOpen={() => false} />
       <Recording />
