@@ -10,6 +10,7 @@ import SidePod from "./SidePod";
 const Home = () => {
   // media query
   const smallScreen = useMediaQuery("(max-width:600px)");
+  const largeScreen = useMediaQuery("(min-width:601px)");
   const [isSidePodOpen, setIsSidePodOpen] = useState(false);
 
   let imgWidthA;
@@ -22,6 +23,7 @@ const Home = () => {
   let text;
   let align;
   let textWidth;
+  let marginTopB;
   if (smallScreen) {
     imgWidthA = "250px";
     imgHeightA = "300px";
@@ -33,26 +35,30 @@ const Home = () => {
     text = "1.2rem";
     align = "left";
     textWidth = "98%";
+    marginTopB = "-300px";
   } else {
     imgWidthA = "350px";
-    imgHeightA = "350px";
+    imgHeightA = "330px";
     imgWidthB = "400px";
     imgHeightB = "400px";
-    boxHeightA = "85vh";
+    boxHeightA = "90vh";
     boxHeightB = "80vh";
     header = "6rem";
-    text = "2rem";
+    text = "1.8rem";
     align = "center";
     textWidth = "70%";
+    marginTopB = "0px";
   }
 
   const imageStyle = {
     width: imgWidthA,
-    height: imgHeightA
+    height: imgHeightA,
+    marginTop: "-50px"
   };
   const imageStyleB = {
     width: imgWidthB,
-    height: imgHeightB
+    height: imgHeightB,
+    marginTop: marginTopB
   };
 
   return (
@@ -70,7 +76,7 @@ const Home = () => {
       {/* Guitar */}
       <Nav setIsSidePodOpen={setIsSidePodOpen} />
       {isSidePodOpen && <SidePod setIsSidePodOpen={setIsSidePodOpen} />}
-      <Box display="flex" flexDirection="column" alignItems="center" mt={8} ml={2}>
+      <Box display="flex" flexDirection="column" alignItems="center" mt={4} ml={2}>
         <Typography variant="h1" sx={{ color: "#C17736", fontSize: header, }} >
           Welcome to Guitar Mate
         </Typography>
@@ -80,7 +86,7 @@ const Home = () => {
           are just a click away. Tune in and turn learning into a game.
         </Typography>
       </Box>
-      <Grid container>
+      <Grid container  mt={largeScreen ? "-8rem" : "0px"}> 
         <Grid item xs={12} sm={6}>
           <Box
             sx={{
@@ -96,7 +102,7 @@ const Home = () => {
                 variant="contained"
                 color="primary"
                 sx={{
-                  top: -50
+                  top: -80
                 }}>
                 GUITAR
               </Button>
@@ -120,7 +126,7 @@ const Home = () => {
                 variant="contained"
                 color="primary"
                 sx={{
-                  top: -40
+                  top: -80
                 }}>
                 BASS
               </Button>

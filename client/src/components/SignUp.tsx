@@ -1,7 +1,8 @@
-import { Box, Button, Grid, TextField, FormHelperText } from "@mui/material";
+import { Box, Button, Grid, TextField, FormHelperText, Typography } from "@mui/material";
 import homeBG from "../assets/homeBG.svg";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import Nav from "./nav";
 
 const SignUp = () => {
   const glassMorphismStyles = {
@@ -11,12 +12,12 @@ const SignUp = () => {
     borderRadius: "20px",
     border: "1px solid",
     borderColor: "#D9D9D9",
-    height: "55%",
-    width: "30%",
+    height: "70%",
+    width: "60%",
     position: "absolute",
     top: "50%",
     left: "50%",
-    padding: "20px",
+    padding: "0px 20px 20px 20px",
     transform: "translate(-50%, -50%)",
     display: "flex",
     flexDirection: "column",
@@ -94,8 +95,12 @@ const SignUp = () => {
         display: "flex",
         flexDirection: "column"
       }}>
+         <Nav  setIsSidePodOpen={() => false} />
       <Grid item xs={12}>
-        <Box sx={glassMorphismStyles}>
+        <Box mt={4} sx={glassMorphismStyles}>
+          <Typography variant="h4" mb={4} sx={{ fontWeight: "bold" }}>
+            Sign Up
+          </Typography>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
@@ -109,6 +114,7 @@ const SignUp = () => {
                   margin="normal"
                   label="Username"
                   name="username"
+                  InputLabelProps={{ style: { fontSize: "20px" } }} // Adjust font size here
                 />
                 <ErrorMessage
                   name="username"
@@ -123,6 +129,7 @@ const SignUp = () => {
                   margin="normal"
                   label="Email"
                   name="email"
+                  InputLabelProps={{ style: { fontSize: "20px" } }} // Adjust font size here
                 />
                 <ErrorMessage name="email" component={FormHelperText} error />
 
@@ -134,6 +141,7 @@ const SignUp = () => {
                   label="Password"
                   name="password"
                   type="password"
+                  InputLabelProps={{ style: { fontSize: "20px" } }} // Adjust font size here
                 />
                 <ErrorMessage
                   name="password"
@@ -149,6 +157,7 @@ const SignUp = () => {
                   label="Confirm Password"
                   name="confirmPassword"
                   type="password"
+                  InputLabelProps={{ style: { fontSize: "20px" } }} // Adjust font size here
                 />
                 <ErrorMessage
                   name="confirmPassword"

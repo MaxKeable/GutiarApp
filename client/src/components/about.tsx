@@ -7,10 +7,13 @@ const About = () => {
   const smallScreen = useMediaQuery("(max-width:600px)");
 
   let heading;
+  let font;
   if (smallScreen) {
     heading = "3.3rem";
+    font = "16px";
   } else {
     heading = "6rem";
+    font = "1.7rem";
   }
 
   return (
@@ -29,7 +32,7 @@ const About = () => {
         <Typography variant="h1" sx={{fontSize: heading }}>About Guitar Mate</Typography>
       </Box>
       <Box display="flex" justifyContent="center" textAlign="justify" mt={3}>
-        <Typography variant="body1" width="80%">
+        <Typography variant="body1" width="80%" sx={{fontSize: font}}>
           Welcome to an innovative guitar tuner application. A smart tool
           combining the power of advanced web technologies and music theory,
           helping musicians tune their instruments with precision and ease. Whether
@@ -47,11 +50,11 @@ const About = () => {
           xs={12}
           px={8}
           sx={{
-            background: "rgba(55, 55, 55, 0.6)",
+            background: "rgba(55, 55, 55, 0.8)",
             borderRadius: "20px",
             p: 3
           }}>
-          <Typography variant="body2">
+          <Typography variant="body2" sx={{fontSize: font}}>
             The tuner is engineered to leverage the capabilities of your
             device's built-in microphone, making it more accessible and easy to
             use. <br /> <br />As you pluck a string on your guitar, the tuner listens
@@ -76,11 +79,11 @@ const About = () => {
           px={8}
           mt={8}
           sx={{
-            background: "rgba(55, 55, 55, 0.6)",
+            background: "rgba(55, 55, 55, 0.8)",
             borderRadius: "20px",
             p: 3
           }}>
-          <Typography>
+          <Typography sx={{fontSize: font}}>
             In developing this guitar tuner, our aim was to simplify the tuning
             process without compromising on accuracy.<br /> <br /> We strived to create a
             tool that caters to musicians of all levels - one that is as useful
