@@ -1,7 +1,6 @@
-import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import bassAPPbg from "../assets/bassBG2.svg";
 import bassHead from "../assets/bassHead.svg";
-import guitarHead from "../assets/guitarHead.svg"; // Assuming you have the guitarHead image
 import Recording from "./guitar/recording";
 import Nav from "./nav";
 
@@ -9,17 +8,14 @@ const BassTuner = () => {
   const smallScreen = useMediaQuery("(max-width:600px)");
 
   let bassHeadHeight;
-  let smallMarginB;
   let tunerHeight;
   let tunerWidth;
   if (smallScreen) {
     bassHeadHeight = "330px";
-    smallMarginB = 17;
     tunerHeight = "33px";
     tunerWidth = "33px";
   } else {
     bassHeadHeight = "330px";
-    smallMarginB = 18;
     tunerHeight = "35px";
     tunerWidth = "35px";
   }
